@@ -2,7 +2,7 @@
 // @Author : minigeek
 package scheduler
 
-import "crawler/engine"
+import "mini_crawler/engine"
 
 type SimpleSchduler struct {
 	workerChan chan engine.Request

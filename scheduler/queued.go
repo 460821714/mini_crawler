@@ -3,7 +3,7 @@
 package scheduler
 
 import (
-	"crawler/engine"
+	"mini_crawler/engine"
 )
 
 type QueuedScheduler struct {

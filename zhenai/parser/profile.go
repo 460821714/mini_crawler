@@ -3,8 +3,8 @@
 package parser
 
 import (
-	"crawler/engine"
-	"crawler/model"
+	"mini_crawler/engine"
+	"mini_crawler/model"
 	"regexp"
 	"strconv"
 )

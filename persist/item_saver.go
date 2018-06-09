@@ -7,7 +7,7 @@ import (
 
 	"context"
 
-	"crawler/engine"
+	"mini_crawler/engine"
 
 	"github.com/pkg/errors"
 	"gopkg.in/olivere/elastic.v5"

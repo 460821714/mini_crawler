@@ -3,10 +3,10 @@
 package parser
 
 import (
-	"crawler/engine"
-	"crawler/model"
 	"fmt"
 	"io/ioutil"
+	"mini_crawler/engine"
+	"mini_crawler/model"
 	"testing"
 )
 

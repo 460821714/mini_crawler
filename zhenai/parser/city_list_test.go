@@ -3,9 +3,9 @@
 package parser
 
 import (
-	"crawler/fetcher"
 	"fmt"
 	"io/ioutil"
+	"mini_crawler/fetcher"
 	"testing"
 )
 

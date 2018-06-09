@@ -4,9 +4,9 @@ package persist
 
 import (
 	"context"
-	"crawler/engine"
-	"crawler/model"
 	"encoding/json"
+	"mini_crawler/engine"
+	"mini_crawler/model"
 	"testing"
 
 	"gopkg.in/olivere/elastic.v5"

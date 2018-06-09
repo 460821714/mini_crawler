@@ -3,9 +3,9 @@
 package view
 
 import (
-	"crawler/engine"
-	"crawler/frontend/model"
-	common "crawler/model"
+	"mini_crawler/engine"
+	"mini_crawler/frontend/model"
+	common "mini_crawler/model"
 	"os"
 	"testing"
 )

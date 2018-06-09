@@ -3,7 +3,7 @@
 package parser
 
 import (
-	"crawler/engine"
+	"mini_crawler/engine"
 	"regexp"
 )
 

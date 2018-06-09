@@ -3,11 +3,11 @@
 package main
 
 import (
-	"crawler/engine"
-	"crawler/persist"
-	"crawler/scheduler"
-	"crawler/zhenai/parser"
 	"log"
+	"mini_crawler/engine"
+	"mini_crawler/persist"
+	"mini_crawler/scheduler"
+	"mini_crawler/zhenai/parser"
 )
 
 // start url for fetch.

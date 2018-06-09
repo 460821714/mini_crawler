@@ -3,8 +3,8 @@
 package engine
 
 import (
-	"crawler/fetcher"
 	"log"
+	"mini_crawler/fetcher"
 )
 
 func Worker(request Request) (ParseResult, error) {

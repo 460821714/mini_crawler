@@ -3,9 +3,9 @@
 package view
 
 import (
-	"crawler/frontend/model"
 	"html/template"
 	"io"
+	"mini_crawler/frontend/model"
 )
 
 type SearchResultView struct {
