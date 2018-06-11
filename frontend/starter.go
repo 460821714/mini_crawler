@@ -8,9 +8,10 @@ import (
 )
 
 func main() {
+	http.Handle("/", http.FileServer(
+		http.Dir("frontend/view")))
 	http.Handle("/search", controller.CreateSearchResultHandler(
-		"mini_crawler/frontend/view/search.html",
-	))
+		"frontend/view/search.html"))
 	err := http.ListenAndServe(":8888", nil)
 	if err != nil {
 		panic(err)
