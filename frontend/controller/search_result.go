@@ -18,6 +18,8 @@ import (
 	"mini_crawler/engine"
 	"reflect"
 
+	"regexp"
+
 	"gopkg.in/olivere/elastic.v5"
 )
 
@@ -44,6 +46,7 @@ func (s SearchResultHandler) ServeHTTP(w http.ResponseWriter, req *http.Request)
 		from = 0
 	}
 	condition := strings.TrimSpace(req.FormValue("q"))
+
 	page, err := s.getSearchResult(condition, from)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
@@ -57,14 +60,22 @@ func (s SearchResultHandler) ServeHTTP(w http.ResponseWriter, req *http.Request)
 func (s SearchResultHandler) getSearchResult(condition string, from int) (model.SearchResult, error) {
 	var result model.SearchResult
 	res, err := s.client.Search("crawler").
-		Query(elastic.NewQueryStringQuery(condition)).
+		Query(elastic.NewQueryStringQuery(rewriteQueryString(condition))).
 		From(from).
 		Do(context.Background())
 	if err != nil {
 		return result, err
 	}
+	result.Query = condition
 	result.Hits = res.TotalHits()
 	result.Start = from
 	result.Items = res.Each(reflect.TypeOf(engine.Item{}))
+	result.PrevFrom = result.Start - len(result.Items)
+	result.NextFrom = result.Start + len(result.Items)
 	return result, nil
+}
+
+func rewriteQueryString(q string) string {
+	reg := regexp.MustCompile(`([A-Z][a-z]*):`)
+	return reg.ReplaceAllString(q, "Payload.$1:")
 }

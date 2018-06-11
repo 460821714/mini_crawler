@@ -14,7 +14,7 @@
 <div id="demo">
     <div align="middle">
         <form method="get">
-            <input type="text" maxlength="100" style="width: 500px" value="" name="q">
+            <input type="text" maxlength="100" style="width: 500px" value="{{.Query}}" name="q">
             <button type="submit">搜索</button>
         </form>
     </div>
@@ -48,6 +48,12 @@
             {{end}}
             </tbody>
         </table>
+        <div align="middle">
+        {{if ge .PrevFrom 0}}
+            <a href="search?q={{.Query}}&from={{.PrevFrom}}">上一页</a>
+        {{end}}
+            <a href="search?q={{.Query}}&from={{.NextFrom}}">下一页</a>
+        </div>
     </div>
 
 </div>
