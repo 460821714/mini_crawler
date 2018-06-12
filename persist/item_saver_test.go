@@ -42,7 +42,7 @@ func TestSave(t *testing.T) {
 
 	const index = "crawler_test"
 	// save item
-	err = save(client, index, item)
+	err = Save(client, index, item)
 	if err != nil {
 		panic(err)
 	}
