@@ -5,6 +5,7 @@ package fetcher
 import (
 	"fmt"
 	"io/ioutil"
+	"mini_crawler_distributed/config"
 	"net/http"
 
 	"bufio"
@@ -18,7 +19,7 @@ import (
 )
 
 // limit fetch speed.
-var rateLimiter = time.Tick(10 * time.Millisecond)
+var rateLimiter = time.Tick(time.Second / config.QPS)
 
 // Fetch returns contents that get response from specially url.
 func Fetch(url string) ([]byte, error) {

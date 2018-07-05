@@ -3,10 +3,8 @@
 package persist
 
 import (
-	"log"
-
 	"context"
-
+	"log"
 	"mini_crawler/engine"
 
 	"github.com/pkg/errors"

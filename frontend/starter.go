@@ -11,8 +11,8 @@ func main() {
 	http.Handle("/", http.FileServer(
 		http.Dir("frontend/view")))
 	http.Handle("/search", controller.CreateSearchResultHandler(
-		"frontend/view/search.html"))
-	err := http.ListenAndServe(":8888", nil)
+		"./frontend/view/search.html"))
+	err := http.ListenAndServe(":8889", nil)
 	if err != nil {
 		panic(err)
 	}

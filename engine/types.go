@@ -2,12 +2,19 @@
 // @Author : minigeek
 package engine
 
+type ParseFunc func([]byte, string) ParseResult
+
+type Parser interface {
+	Parse(contents []byte, url string) ParseResult
+	Serialize() (name string, args interface{})
+}
+
 // request body.
 type Request struct {
 	// request url
 	Url string
 	// parser
-	ParseFunc func([]byte, string) ParseResult
+	Parser Parser
 }
 
 // this is parse result.
@@ -25,6 +32,32 @@ type Item struct {
 	Payload interface{}
 }
 
-func NilParserFunc(b []byte) ParseResult {
+type NilParserFunc struct{}
+
+func (NilParserFunc) Parse(contents []byte, url string) ParseResult {
 	return ParseResult{}
+}
+
+func (NilParserFunc) Serialize() (name string, args interface{}) {
+	return "ParseNil", nil
+}
+
+type FuncParser struct {
+	parser ParseFunc
+	name   string
+}
+
+func (f *FuncParser) Parse(contents []byte, url string) ParseResult {
+	return f.parser(contents, url)
+}
+
+func (f *FuncParser) Serialize() (name string, args interface{}) {
+	return f.name, nil
+}
+
+func NewFuncParser(f ParseFunc, name string) *FuncParser {
+	return &FuncParser{
+		parser: f,
+		name:   name,
+	}
 }
